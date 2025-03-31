@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VetZone.ClientesPage"
+             Title="ClientesPage"
+             BackgroundColor="LightGray">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Margin="15">
+            <Button Text="☰ Menu" TextColor="Black" 
+                Clicked="OpenFlyoutMenu"/>
+            <Label Text="Clientes" FontSize="Large" TextColor="Black" Margin="20" HorizontalOptions="Center" />
+
+            <Grid ColumnDefinitions="4*,1*,1*" HeightRequest="50">
+                <Button Text="Cliente 1" Clicked="OnClienteClicked" Grid.Column="0" HorizontalOptions="Fill"/>
+                <ImageButton Source="lapis.png" Clicked="OnEditarClienteClicked" Grid.Column="1" HeightRequest="30" WidthRequest="30" />
+                <ImageButton Source="lixeira.png" Clicked="OnExcluirClienteClicked" Grid.Column="2" HeightRequest="30" WidthRequest="30" />
+            </Grid>
+
+            <Grid ColumnDefinitions="4*,1*,1*" HeightRequest="50">
+                <Button Text="Cliente 2" Clicked="OnClienteClicked" Grid.Column="0" HorizontalOptions="Fill" />
+                <ImageButton Source="lapis.png" Clicked="OnEditarClienteClicked" Grid.Column="1" HeightRequest="30" WidthRequest="30" />
+                <ImageButton Source="lixeira.png" Clicked="OnExcluirClienteClicked" Grid.Column="2" HeightRequest="30" WidthRequest="30" />
+            </Grid>
+
+            <Grid ColumnDefinitions="4*,1*,1*" HeightRequest="50">
+                <Button Text="Cliente 3" Clicked="OnClienteClicked" Grid.Column="0" HorizontalOptions="Fill" />
+                <ImageButton Source="lapis.png" Clicked="OnEditarClienteClicked" Grid.Column="1" HeightRequest="30" WidthRequest="30" />
+                <ImageButton Source="lixeira.png" Clicked="OnExcluirClienteClicked" Grid.Column="2" HeightRequest="30" WidthRequest="30" />
+            </Grid>
+
+            <Grid ColumnDefinitions="4*,1*,1*" HeightRequest="50">
+                <Button Text="Cliente 4" Clicked="OnClienteClicked" Grid.Column="0" HorizontalOptions="Fill" />
+                <ImageButton Source="lapis.png" Clicked="OnEditarClienteClicked" Grid.Column="1" HeightRequest="30" WidthRequest="30" />
+                <ImageButton Source="lixeira.png" Clicked="OnExcluirClienteClicked" Grid.Column="2" HeightRequest="30" WidthRequest="30" />
+            </Grid>
+
+            <Button Text="Adicionar Cliente" Clicked="OnAdicionarClienteClicked" WidthRequest="300" Margin="30"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+

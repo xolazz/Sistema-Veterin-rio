@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VetZone.CadastroClientePage"
+             BackgroundColor="LightGray"
+             Title="CadastroClientePage">
+    <VerticalStackLayout Spacing="10" Margin="15">
+        <Button Text="☰ Menu" TextColor="Black" 
+                Clicked="OpenFlyoutMenu"/>
+        <Label Text="Clientes" FontSize="Large" TextColor="Black" HorizontalOptions="Center" />
+        <Entry Placeholder="Nome" />
+        <Entry Placeholder="CPF" />
+        <Entry Placeholder="E-mail" />
+        <Entry Placeholder="Data de Nascimento" />
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button Text="Descartar" Clicked="OnDescartarClicked" Margin="20" />
+            <Button Text="Salvar" Clicked="OnSalvarClicked" Margin="20"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

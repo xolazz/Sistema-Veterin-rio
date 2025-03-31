@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VetZone.AnimaisPage"
+             Title="AnimaisPage"
+             BackgroundColor="LightGray">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Margin="15">
+            <Button Text="☰ Menu" TextColor="Black" 
+                Clicked="OpenFlyoutMenu"/>
+            <Label Text="Animais" FontSize="Large" TextColor="Black" Margin="20" HorizontalOptions="Center" />
+
+            <Grid ColumnDefinitions="4*,1*,1*" HeightRequest="50">
+                <Button Text="Animal 1" Clicked="OnAnimalClicked" Grid.Column="0" HorizontalOptions="Fill"/>
+                <ImageButton Source="lapis.png" Clicked="OnEditarAnimalClicked" Grid.Column="1" HeightRequest="30" WidthRequest="30" />
+                <ImageButton Source="lixeira.png" Clicked="OnExcluirAnimalClicked" Grid.Column="2" HeightRequest="30" WidthRequest="30" />
+            </Grid>
+
+            <Grid ColumnDefinitions="4*,1*,1*" HeightRequest="50">
+                <Button Text="Aniaml 2" Clicked="OnAnimalClicked" Grid.Column="0" HorizontalOptions="Fill" />
+                <ImageButton Source="lapis.png" Clicked="OnEditarAnimalClicked" Grid.Column="1" HeightRequest="30" WidthRequest="30" />
+                <ImageButton Source="lixeira.png" Clicked="OnExcluirAnimalClicked" Grid.Column="2" HeightRequest="30" WidthRequest="30" />
+            </Grid>
+
+            <Grid ColumnDefinitions="4*,1*,1*" HeightRequest="50">
+                <Button Text="Animal 3" Clicked="OnAnimalClicked" Grid.Column="0" HorizontalOptions="Fill" />
+                <ImageButton Source="lapis.png" Clicked="OnEditarAnimalClicked" Grid.Column="1" HeightRequest="30" WidthRequest="30" />
+                <ImageButton Source="lixeira.png" Clicked="OnExcluirAnimalClicked" Grid.Column="2" HeightRequest="30" WidthRequest="30" />
+            </Grid>
+
+            <Grid ColumnDefinitions="4*,1*,1*" HeightRequest="50">
+                <Button Text="Animal 4" Clicked="OnAnimalClicked" Grid.Column="0" HorizontalOptions="Fill" />
+                <ImageButton Source="lapis.png" Clicked="OnEditarAnimalClicked" Grid.Column="1" HeightRequest="30" WidthRequest="30" />
+                <ImageButton Source="lixeira.png" Clicked="OnExcluirAnimalClicked" Grid.Column="2" HeightRequest="30" WidthRequest="30" />
+            </Grid>
+
+            <Button Text="Adicionar Animal" Clicked="OnAdicionarAnimalClicked" WidthRequest="300" Margin="30"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

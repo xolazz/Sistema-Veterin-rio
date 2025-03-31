@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VetZone.MainPage"
+             BackgroundColor="LightGray"> 
+
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- Botão de menu lateral -->
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="☰"  TextColor="White" MaximumWidthRequest="50" 
+                    Clicked="OpenFlyoutMenu"/>
+        
+            <Button Text="VetZone" FontSize="20" 
+                    TextColor="White" CornerRadius="20" HorizontalOptions="Center"/>
+        </HorizontalStackLayout>
+
+    
+        <!-- Barra de pesquisa -->
+        <Frame Padding="5" CornerRadius="10" Margin="0,20">
+            <HorizontalStackLayout>
+                <Entry Placeholder="Buscar..." TextColor="White" BackgroundColor="Transparent" VerticalOptions="Fill" HorizontalOptions="Fill"/>
+                <ImageButton Source="search.png" HeightRequest="25" WidthRequest="25"/>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- Botões -->
+        <Button Text="Animais" TextColor="White"
+                CornerRadius="25" Clicked="GoToAnimais"/>
+        <Button Text="Clientes" TextColor="White"
+                CornerRadius="25" Clicked="GoToClientes"/>
+        <Button Text="Espécies" TextColor="White"
+                CornerRadius="25" Clicked="GoToEspecies"/>
+
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:VetZone"
+       Shell.NavBarIsVisible="False"
+       x:Class="VetZone.AppShell">
+
+    <!-- Flyout Menu -->
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="MediumPurple" Padding="20">
+            <Label Text="VetZone" FontSize="24" TextColor="White"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <!-- Definição das Páginas -->
+    <ShellContent Title="Início" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"/>
+    <ShellContent Title="Animais" ContentTemplate="{DataTemplate local:AnimaisPage}" Route="AnimaisPage"/>
+    <ShellContent Title="Clientes" ContentTemplate="{DataTemplate local:ClientesPage}" Route="ClientesPage"/>
+    <ShellContent Title="Espécies" ContentTemplate="{DataTemplate local:EspeciesPage}" Route="EspeciesPage"/>
+
+
+</Shell>
