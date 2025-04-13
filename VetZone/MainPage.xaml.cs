@@ -26,5 +26,11 @@
         {
             await Shell.Current.GoToAsync("//EspeciesPage");
         }
+
+        private async void GoToUsuarios(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//CadastroUsuario" +
+                "Page");
+        }
     }
 }
