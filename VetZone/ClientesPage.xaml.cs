@@ -1,13 +1,11 @@
-using Microsoft.Maui.Controls;
-
 namespace VetZone;
 
 public partial class ClientesPage : ContentPage
-{   
-        public ClientesPage()
-        {
-            InitializeComponent();
-        }      
+{
+    public ClientesPage()
+    {
+        InitializeComponent();
+    }
 
     private async void OnClienteClicked(object sender, EventArgs e)
     {

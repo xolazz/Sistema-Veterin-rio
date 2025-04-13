@@ -32,6 +32,8 @@
                 CornerRadius="25" Clicked="GoToClientes"/>
         <Button Text="Espécies" TextColor="White"
                 CornerRadius="25" Clicked="GoToEspecies"/>
+        <Button Text="Cadastro de Novos Usuários" TextColor="White"
+                CornerRadius="25" Clicked="GoToUsuarios"/>
 
     </VerticalStackLayout>
 </ContentPage>

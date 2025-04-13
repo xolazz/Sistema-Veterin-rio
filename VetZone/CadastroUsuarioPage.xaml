@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VetZone.CadastroUsuarioPage"
+             Title="CadastroUsuarioPage"
+             BackgroundColor="LightGray">
+    <VerticalStackLayout Spacing="10" Margin="15">
+        <Button Text="☰ Menu" TextColor="Black" Clicked="OpenFlyoutMenu"/>
+        <Label Text="Cadastro de novos Usuários" FontSize="Large" Margin="20" TextColor="Black" HorizontalOptions="Center" />
+        <Entry Placeholder="CPF" Keyboard="Numeric"/>
+        <Entry Placeholder="Nome" />
+        
+        <Label Text="Data de Nascimento:" x:Name="DateENtry" TextColor="Gray"/>
+        <DatePicker Date="{Binding SelectedDate}" IsVisible="true" TextColor="Gray"/>
+        
+        <Entry Placeholder="E-mail" />
+        <Entry Placeholder="Telefone" Keyboard="Telephone"/>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Button Text="Voltar" Clicked="OnVoltarClicked" Margin="20" />
+            <Button Text="Cadastrar" Margin="20"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

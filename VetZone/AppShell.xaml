@@ -3,6 +3,7 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:VetZone"
        Shell.NavBarIsVisible="False"
+       FlyoutBackgroundColor="LightGray"
        x:Class="VetZone.AppShell">
 
     <!-- Flyout Menu -->
@@ -12,11 +13,52 @@
         </Grid>
     </Shell.FlyoutHeader>
 
-    <!-- Definição das Páginas -->
-    <ShellContent Title="Início" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"/>
-    <ShellContent Title="Animais" ContentTemplate="{DataTemplate local:AnimaisPage}" Route="AnimaisPage"/>
-    <ShellContent Title="Clientes" ContentTemplate="{DataTemplate local:ClientesPage}" Route="ClientesPage"/>
-    <ShellContent Title="Espécies" ContentTemplate="{DataTemplate local:EspeciesPage}" Route="EspeciesPage"/>
+    <Shell.FlyoutFooter>
+        <Grid BackgroundColor="LightGray" Padding="10" HorizontalOptions="Fill">
+            <Label Text="© 2025 VetZone. Todos os direitos reservados."
+                   FontSize="12"
+                   HorizontalOptions="Center"
+                   TextColor="Black"/>
+        </Grid>
+    </Shell.FlyoutFooter>
 
+            <!-- Definição das Páginas -->
+    <FlyoutItem Title="Início" Icon="menu.png">
+    <ShellContent Title="Início" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Animais" Icon="animal.png">
+    <ShellContent Title="Animais" ContentTemplate="{DataTemplate local:AnimaisPage}" Route="AnimaisPage"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Clientes" Icon="clientes.png">
+    <ShellContent Title="Clientes" ContentTemplate="{DataTemplate local:ClientesPage}" Route="ClientesPage"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Espécies" Icon="especies2.png">
+        <ShellContent Title="Espécies" ContentTemplate="{DataTemplate local:EspeciesPage}" Route="EspeciesPage"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Cadastro Usuários" Icon="especies2.png">
+        <ShellContent Title="Espécies" ContentTemplate="{DataTemplate local:CadastroUsuarioPage}" Route="CadastroUsuarioPage"/>
+    </FlyoutItem>
+
+    <TabBar>
+        <Tab Title="Início" Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+
+        <Tab Title="Perfil" Icon="profile.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AnimaisPage}" />
+        </Tab>
+
+        <Tab Title="Notificações" Icon="notifications.png">
+            <ShellContent ContentTemplate="{DataTemplate local:ClientesPage}" />
+        </Tab>
+
+        <Tab Title="Notificações" Icon="notifications.png">
+            <ShellContent ContentTemplate="{DataTemplate local:EspeciesPage}" />
+        </Tab>
+    </TabBar>
 
 </Shell>

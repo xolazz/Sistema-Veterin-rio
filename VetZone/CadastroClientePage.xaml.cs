@@ -2,10 +2,10 @@ namespace VetZone;
 
 public partial class CadastroClientePage : ContentPage
 {
-	public CadastroClientePage()
-	{
-		InitializeComponent();
-	}
+    public CadastroClientePage()
+    {
+        InitializeComponent();
+    }
 
     private async void OnDescartarClicked(object sender, EventArgs e)
     {
@@ -19,8 +19,7 @@ public partial class CadastroClientePage : ContentPage
 
     private void OpenFlyoutMenu(object sender, EventArgs e)
     {
-        Shell.Current.FlyoutIsPresented = true; 
+        Shell.Current.FlyoutIsPresented = true;
     }
 
 }
-  
