@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VetZone.ClientesPage"
+             Title="ClientesPage"
+             BackgroundColor="LightGray">
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Margin="15">
+            <Button Text="☰ Menu" TextColor="Black" 
+                Clicked="OpenFlyoutMenu"/>
+            <Label Text="Clientes" FontSize="Large" TextColor="Black" Margin="20" HorizontalOptions="Center" />
+            
+            <Button Text="Adicionar Cliente" Clicked="OnAdicionarClienteClicked" WidthRequest="300" Margin="30"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
