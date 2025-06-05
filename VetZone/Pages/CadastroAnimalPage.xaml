@@ -2,19 +2,34 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VetZone.CadastroAnimalPage"
-             Title="CadastroAnimalPage" BackgroundColor="LightGray">
-    <VerticalStackLayout Spacing="10" Margin="15">
-        <Button Text="☰ Menu" TextColor="Black" 
-                Clicked="OpenFlyoutMenu"/>
-        <Label Text="Cadastro Animais" FontSize="Large" TextColor="Black" HorizontalOptions="Center" />
-        <Entry Placeholder="Nome" />
-        <Entry Placeholder="Espécie" />
-        <Entry Placeholder="Idade" />
-        <Entry Placeholder="Observação" />
+             BackgroundColor="LightGray"
+             Title="Cadastro de Animal">
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Margin="20">
+            <Label Text="Dados do Animal" FontSize="Large" TextColor="Black" HorizontalOptions="Center" Margin="0,10,0,20" />
 
-        <HorizontalStackLayout HorizontalOptions="Center">
-            <Button Text="Descartar" Clicked="OnDescartarClicked" Margin="20" />
-            <Button Text="Salvar" Clicked="OnSalvarClicked" Margin="20"/>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+            <Image x:Name="AnimalImage"
+                   Source="placeholder_animal.png" Aspect="AspectFill"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10" />
+
+            <Button Text="Selecionar Foto" Clicked="OnSelecionarFotoClicked" />
+
+            <Entry x:Name="NomeAnimalEntry" Placeholder="Nome do Animal" Keyboard="Text" />
+
+            <Picker x:Name="EspeciePicker"
+                    Title="Selecione a Espécie"
+                    ItemDisplayBinding="{Binding Nome}" Margin="0,5,0,0" />
+
+            <Entry x:Name="IdadeAproximadaEntry" Placeholder="Idade Aproximada (ex: 3 anos)" Keyboard="Text" />
+            <Editor x:Name="SituacaoClinicaEditor" Placeholder="Situação Clínica" HeightRequest="100" />
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="0,20,0,0">
+                <Button Text="Descartar" Clicked="OnDescartarClicked" BackgroundColor="Red" TextColor="White" WidthRequest="120"/>
+                <Button Text="Salvar" Clicked="OnSalvarClicked" BackgroundColor="Green" TextColor="White" WidthRequest="120"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
