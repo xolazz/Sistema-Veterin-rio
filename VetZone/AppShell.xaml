@@ -12,7 +12,7 @@
             <Label Text="VetZone" FontSize="24" TextColor="White"/>
         </Grid>
     </Shell.FlyoutHeader>
-
+    
     <Shell.FlyoutFooter>
         <Grid BackgroundColor="LightGray" Padding="10" HorizontalOptions="Fill">
             <Label Text="© 2025 VetZone. Todos os direitos reservados."
