@@ -1,15 +1,16 @@
-namespace VetZone.Models;
+// Models/Cliente.cs
+using SQLite;
+using System;
 
-public class Cliente : ContentPage
+namespace VetZone.Models
 {
-	public Cliente()
-	{
-		Content = new VerticalStackLayout
-		{
-			Children = {
-				new Label { HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center, Text = "Welcome to .NET MAUI!"
-				}
-			}
-		};
-	}
+    public class Cliente
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string CPF { get; set; }
+        public string Email { get; set; }
+        public DateTime DataNascimento { get; set; } // Alterado para DateTime
+    }
 }
