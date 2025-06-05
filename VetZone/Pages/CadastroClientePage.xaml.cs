@@ -6,7 +6,7 @@ namespace VetZone;
 public partial class CadastroClientePage : ContentPage
 {
     private ClienteService _clienteService;
-    private Cliente _clienteAtual; // Usaremos para guardar o cliente sendo editado
+    private Cliente _clienteAtual;
 
     public CadastroClientePage()
     {
@@ -14,13 +14,11 @@ public partial class CadastroClientePage : ContentPage
         _clienteService = new ClienteService();
     }
 
-    // Construtor para EDIÇÃO:
-    // Recebe um objeto Cliente para preencher os campos.
-    public CadastroClientePage(Cliente cliente) : this() // Chama o construtor padrão primeiro
+    public CadastroClientePage(Cliente cliente) : this() 
     {
         _clienteAtual = cliente;
         CarregarDadosCliente();
-        Title = "Editar Cliente"; // Muda o título da página para indicar edição
+        Title = "Editar Cliente"; 
     }
 
     private void CarregarDadosCliente()
@@ -30,13 +28,12 @@ public partial class CadastroClientePage : ContentPage
             NomeEntry.Text = _clienteAtual.Nome;
             CpfEntry.Text = _clienteAtual.CPF;
             EmailEntry.Text = _clienteAtual.Email;
-            DataNascimentoPicker.Date = _clienteAtual.DataNascimento; // Preenche o DatePicker
+            DataNascimentoPicker.Date = _clienteAtual.DataNascimento; 
         }
     }
 
     private async void OnSalvarClicked(object sender, EventArgs e)
     {
-        // Validação básica dos campos
         if (string.IsNullOrWhiteSpace(NomeEntry.Text))
         {
             await DisplayAlert("Erro", "O nome do cliente é obrigatório.", "OK");
@@ -53,32 +50,26 @@ public partial class CadastroClientePage : ContentPage
             return;
         }
 
-        // Se _clienteAtual for nulo, é um novo cadastro
         if (_clienteAtual == null)
         {
             _clienteAtual = new Cliente();
         }
 
-        // Popula o objeto Cliente com os dados dos campos
         _clienteAtual.Nome = NomeEntry.Text;
         _clienteAtual.CPF = CpfEntry.Text;
         _clienteAtual.Email = EmailEntry.Text;
         _clienteAtual.DataNascimento = DataNascimentoPicker.Date;
 
-        // Salva (insere ou atualiza) o cliente no banco de dados
         await _clienteService.SaveClienteAsync(_clienteAtual);
 
-        // Volta para a página anterior (ClientesPage)
         await Navigation.PopAsync();
     }
 
     private async void OnDescartarClicked(object sender, EventArgs e)
     {
-        // Simplesmente volta para a página anterior sem salvar
         await Navigation.PopAsync();
     }
 
-    // Método auxiliar para validação de e-mail simples
     private bool IsValidEmail(string email)
     {
         try
