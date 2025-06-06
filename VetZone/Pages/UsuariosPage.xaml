@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VetZone.UsuariosPage"
+             Title="Visualizar Usuários"
+             BackgroundColor="LightGray">
+    <VerticalStackLayout Spacing="10" Margin="15">
+        <Button Text="☰ Menu" TextColor="Black" Clicked="OpenFlyoutMenu" HorizontalOptions="Start" />
+        <Label Text="Usuários Cadastrados" FontSize="Large" Margin="20" TextColor="Black" HorizontalOptions="Center" />
+
+        <Button Text="Adicionar Novo Usuário"
+                Clicked="OnAdicionarUsuarioClicked"
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="50"
+                WidthRequest="250"
+                Margin="0,10,0,10"
+                HorizontalOptions="Center" />
+
+        <HorizontalStackLayout Spacing="10" Margin="0,10">
+            <Entry x:Name="PesquisaUsuarioEntry" Placeholder="Pesquisar por Código ou Nome" Keyboard="Text" HorizontalOptions="FillAndExpand" />
+            <Button Text="Pesquisar" Clicked="OnPesquisarListaClicked" />
+            <Button Text="Limpar Pesquisa" Clicked="OnLimparPesquisaClicked" />
+        </HorizontalStackLayout>
+
+        <CollectionView x:Name="UsuariosCollectionView" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="10" BackgroundColor="White" CornerRadius="10">
+                        <StackLayout>
+                            <Label Text="{Binding Id, StringFormat='Código: {0}'}" FontSize="Medium" FontAttributes="Bold" TextColor="Black" />
+                            <Label Text="{Binding Nome, StringFormat='Nome: {0}'}" FontSize="Small" TextColor="Gray" />
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Spacing="10" Margin="0,5,0,0">
+                                <Button Text="Editar" Clicked="OnEditarUsuarioClicked" CommandParameter="{Binding .}" BackgroundColor="LightBlue" TextColor="Black" />
+                                <Button Text="Excluir" Clicked="OnExcluirUsuarioClicked" CommandParameter="{Binding .}" BackgroundColor="Red" TextColor="White" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

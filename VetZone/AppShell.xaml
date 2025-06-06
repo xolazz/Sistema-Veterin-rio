@@ -31,7 +31,7 @@
     <ShellContent Title="Animais" ContentTemplate="{DataTemplate local:AnimaisPage}" Route="AnimaisPage"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Clientes" Icon="clientes.png">
+    <FlyoutItem Title="Clientes" Icon="cliente.png">
     <ShellContent Title="Clientes" ContentTemplate="{DataTemplate local:ClientesPage}" Route="ClientesPage"/>
     </FlyoutItem>
 
@@ -39,8 +39,8 @@
         <ShellContent Title="Espécies" ContentTemplate="{DataTemplate local:EspeciesPage}" Route="EspeciesPage"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Cadastro Usuários" Icon="especies2.png">
-        <ShellContent Title="Espécies" ContentTemplate="{DataTemplate local:CadastroUsuarioPage}" Route="CadastroUsuarioPage"/>
+    <FlyoutItem Title="Visualizar Usuários" Icon="clientes.png">
+        <ShellContent Title="Lista de Usuários" ContentTemplate="{DataTemplate local:UsuariosPage}" Route="UsuariosPage" />
     </FlyoutItem>
 
     <TabBar>
@@ -52,7 +52,7 @@
             <ShellContent ContentTemplate="{DataTemplate local:AnimaisPage}" />
         </Tab>
 
-        <Tab Title="Notificações" Icon="notifications.png">
+        <Tab Title="Notificações" Icon="cliente.png">
             <ShellContent ContentTemplate="{DataTemplate local:ClientesPage}" />
         </Tab>
 

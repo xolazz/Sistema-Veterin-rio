@@ -1,6 +1,7 @@
 using VetZone.Models;
 using VetZone.Services;
-using Microsoft.Maui.Media; // Para MediaPicker
+using Microsoft.Maui.Media;
+using System.Linq; 
 
 namespace VetZone;
 
@@ -8,33 +9,45 @@ public partial class CadastroAnimalPage : ContentPage
 {
     private AnimalService _animalService;
     private EspecieService _especieService;
+    private ClienteService _clienteService; 
     private Animal _animalAtual;
-    private string _caminhoFotoTemporario; // Para armazenar o caminho da foto selecionada
+    private string _caminhoFotoTemporario;
 
     public CadastroAnimalPage()
     {
         InitializeComponent();
         _animalService = new AnimalService();
         _especieService = new EspecieService();
-        LoadEspeciesPicker(); // Carrega as espécies no Picker
+        _clienteService = new ClienteService();
+        LoadPickers(); 
     }
 
-    // Construtor para EDIÇÃO:
     public CadastroAnimalPage(Animal animal) : this()
     {
         _animalAtual = animal;
-        CarregarDadosAnimal();
         Title = "Editar Animal";
+        CarregarDadosAnimal(); 
     }
 
-    private async void LoadEspeciesPicker()
+    private async void LoadPickers()
     {
         var especies = await _especieService.GetEspeciesAsync();
         EspeciePicker.ItemsSource = especies;
-        // Se estiver editando e o animal tiver uma espécie, selecione-a
-        if (_animalAtual != null && _animalAtual.Especie != null)
+
+        var clientes = await _clienteService.GetClientesAsync();
+        ClientePicker.ItemsSource = clientes;
+
+        // Se estiver editando, pré-selecione os valores
+        if (_animalAtual != null)
         {
-            EspeciePicker.SelectedItem = especies.FirstOrDefault(e => e.Id == _animalAtual.Especie.Id);
+            if (_animalAtual.Especie != null)
+            {
+                EspeciePicker.SelectedItem = especies.FirstOrDefault(e => e.Id == _animalAtual.Especie.Id);
+            }
+            if (_animalAtual.Cliente != null)
+            {
+                ClientePicker.SelectedItem = clientes.FirstOrDefault(c => c.Id == _animalAtual.Cliente.Id);
+            }
         }
     }
 
@@ -46,11 +59,10 @@ public partial class CadastroAnimalPage : ContentPage
             IdadeAproximadaEntry.Text = _animalAtual.IdadeAproximada.ToString();
             SituacaoClinicaEditor.Text = _animalAtual.SituacaoClinica;
 
-            // Carrega a foto, se houver
             if (!string.IsNullOrEmpty(_animalAtual.FotoPath))
             {
                 AnimalImage.Source = _animalAtual.FotoPath;
-                _caminhoFotoTemporario = _animalAtual.FotoPath; // Mantém o caminho atual para caso não mude
+                _caminhoFotoTemporario = _animalAtual.FotoPath;
             }
         }
     }
@@ -59,11 +71,10 @@ public partial class CadastroAnimalPage : ContentPage
     {
         if (MediaPicker.IsCaptureSupported)
         {
-            FileResult photo = await MediaPicker.PickPhotoAsync(); // Ou CapturePhotoAsync() para tirar foto
+            FileResult photo = await MediaPicker.PickPhotoAsync();
 
             if (photo != null)
             {
-                // Salvar a foto em um local persistente no armazenamento do aplicativo
                 _caminhoFotoTemporario = Path.Combine(FileSystem.AppDataDirectory, photo.FileName);
                 using (var stream = await photo.OpenReadAsync())
                 using (var newStream = File.OpenWrite(_caminhoFotoTemporario))
@@ -71,7 +82,7 @@ public partial class CadastroAnimalPage : ContentPage
                     await stream.CopyToAsync(newStream);
                 }
 
-                AnimalImage.Source = _caminhoFotoTemporario; // Exibe a foto selecionada
+                AnimalImage.Source = _caminhoFotoTemporario;
             }
         }
         else
@@ -92,6 +103,12 @@ public partial class CadastroAnimalPage : ContentPage
             await DisplayAlert("Erro", "Selecione a espécie do animal.", "OK");
             return;
         }
+        // Validação para Cliente
+        if (ClientePicker.SelectedItem == null)
+        {
+            await DisplayAlert("Erro", "Selecione o cliente responsável pelo animal.", "OK");
+            return;
+        }
 
         if (_animalAtual == null)
         {
@@ -99,11 +116,17 @@ public partial class CadastroAnimalPage : ContentPage
         }
 
         _animalAtual.Nome = NomeAnimalEntry.Text;
-        _animalAtual.Especie = EspeciePicker.SelectedItem as Especie; // Pega o objeto Espécie selecionado
-        _animalAtual.EspecieId = _animalAtual.Especie.Id; // Salva apenas o ID da espécie
-        _animalAtual.IdadeAproximada = int.TryParse(IdadeAproximadaEntry.Text, out int idade) ? idade : 0; // Tenta converter para int
+        _animalAtual.IdadeAproximada = int.TryParse(IdadeAproximadaEntry.Text, out int idade) ? idade : 0;
         _animalAtual.SituacaoClinica = SituacaoClinicaEditor.Text;
-        _animalAtual.FotoPath = _caminhoFotoTemporario; // Salva o caminho da foto
+        _animalAtual.FotoPath = _caminhoFotoTemporario;
+
+        // Atribuição de relacionamentos
+        _animalAtual.Especie = EspeciePicker.SelectedItem as Especie;
+        _animalAtual.EspecieId = _animalAtual.Especie.Id;
+
+        // Atribuição do relacionamento com Cliente
+        _animalAtual.Cliente = ClientePicker.SelectedItem as Cliente;
+        _animalAtual.ClienteId = _animalAtual.Cliente.Id; 
 
         await _animalService.SaveAnimalAsync(_animalAtual);
         await Navigation.PopAsync();

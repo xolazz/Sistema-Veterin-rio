@@ -8,12 +8,14 @@ namespace VetZone.Services
     public class AnimalService
     {
         private SQLiteAsyncConnection _database;
-        private EspecieService _especieService; // Para buscar as espécies
+        private EspecieService _especieService;
+        private ClienteService _clienteService; 
 
         public AnimalService()
         {
             InitializeDatabase();
-            _especieService = new EspecieService(); // Instancia o serviço de espécies
+            _especieService = new EspecieService();
+            _clienteService = new ClienteService(); 
         }
 
         private async void InitializeDatabase()
@@ -31,10 +33,11 @@ namespace VetZone.Services
             await EnsureDatabaseInitialized();
             var animais = await _database.Table<Animal>().ToListAsync();
 
-            // Carrega a espécie para cada animal (join manual em memória)
             foreach (var animal in animais)
             {
                 animal.Especie = await _especieService.GetEspecieAsync(animal.EspecieId);
+                // Carrega o cliente
+                animal.Cliente = await _clienteService.GetClienteAsync(animal.ClienteId);
             }
             return animais;
         }
@@ -46,6 +49,8 @@ namespace VetZone.Services
             if (animal != null)
             {
                 animal.Especie = await _especieService.GetEspecieAsync(animal.EspecieId);
+                // Carrega o cliente
+                animal.Cliente = await _clienteService.GetClienteAsync(animal.ClienteId);
             }
             return animal;
         }

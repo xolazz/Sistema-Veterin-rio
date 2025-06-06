@@ -38,6 +38,7 @@
 
                             <StackLayout Grid.Column="1" VerticalOptions="Center">
                                 <Label Text="{Binding Nome}" FontSize="Medium" FontAttributes="Bold" TextColor="Black" />
+                                <Label Text="{Binding Cliente.Nome, StringFormat='Tutor: {0}'}" FontSize="Small" TextColor="Gray" />
                                 <Label Text="{Binding Especie.Nome, StringFormat='Espécie: {0}'}" FontSize="Small" TextColor="Gray" />
                                 <Label Text="{Binding IdadeAproximada, StringFormat='Idade: {0}'}" FontSize="Small" TextColor="Gray" />
                                 <Label Text="{Binding SituacaoClinica, StringFormat='Situação: {0}'}" FontSize="Small" TextColor="Gray" LineBreakMode="WordWrap" />

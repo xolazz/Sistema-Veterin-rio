@@ -2,23 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VetZone.CadastroUsuarioPage"
-             Title="CadastroUsuarioPage"
+             Title="Novo Usuário"
              BackgroundColor="LightGray">
     <VerticalStackLayout Spacing="10" Margin="15">
-        <Button Text="☰ Menu" TextColor="Black" Clicked="OpenFlyoutMenu"/>
-        <Label Text="Cadastro de novos Usuários" FontSize="Large" Margin="20" TextColor="Black" HorizontalOptions="Center" />
-        <Entry Placeholder="CPF" Keyboard="Numeric"/>
-        <Entry Placeholder="Nome" />
-        
-        <Label Text="Data de Nascimento:" x:Name="DateENtry" TextColor="Gray"/>
-        <DatePicker Date="{Binding SelectedDate}" IsVisible="true" TextColor="Gray"/>
-        
-        <Entry Placeholder="E-mail" />
-        <Entry Placeholder="Telefone" Keyboard="Telephone"/>
+        <Button Text="☰ Menu" TextColor="Black" Clicked="OpenFlyoutMenu" HorizontalOptions="Start" />
+        <Label Text="Cadastrar Novo Usuário" FontSize="Large" Margin="20" TextColor="Black" HorizontalOptions="Center" />
 
-        <HorizontalStackLayout HorizontalOptions="Center">
-            <Button Text="Voltar" Clicked="OnVoltarClicked" Margin="20" />
-            <Button Text="Cadastrar" Margin="20"/>
+        <Entry x:Name="NomeUsuarioEntry" Placeholder="Nome do Usuário" />
+        <Entry x:Name="SenhaUsuarioEntry" Placeholder="Senha" IsPassword="True" />
+
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="0,20,0,0">
+            <Button Text="Limpar" Clicked="OnLimparClicked" BackgroundColor="Orange" TextColor="White" WidthRequest="120" />
+            <Button Text="Cadastrar" Clicked="OnCadastrarClicked" BackgroundColor="Green" TextColor="White" WidthRequest="150" />
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
